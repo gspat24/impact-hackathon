@@ -10,6 +10,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/vue-fontawesome": "^0.1.7",
     "core-js": "^3.3.2",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
@@ -43,7 +46,16 @@
       "plugin:vue/essential",
       "@vue/standard"
     ],
-    "rules": {},
+    "rules": {
+      "space-before-blocks": "off",
+      "space-before-function-paren": "off",
+      "no-undef": "off",
+      "keyword-spacing": "off",
+      "comma-dangle": "off",
+      "vue/require-v-for-key": "off",
+      "vue/valid-v-for": "off",
+      "prefer-promise-reject-errors": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     },
