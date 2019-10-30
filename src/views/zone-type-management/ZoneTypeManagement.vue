@@ -1,13 +1,21 @@
 <template>
   <div>
     <b-container>
-      Zone Type Management
+      <h2>Zone Type Management</h2>
       <br>
-      <zone-type-form />
+      <div class="text-right">
+        <zone-type-form ref="zoneForm" />
+      </div>
       <b-row class="mt-4">
-        <b-col><b-table striped hover :items="zoneTypeList"></b-table></b-col>
+        <b-col>
+          <b-table @row-dblclicked="rowClicked" striped hover :fields="['color', 'description', 'details', 'keyAttributeName', 'attributes']" :items="zoneTypeList">
+            <template v-slot:cell(color)="data">
+            <fa icon="circle" :color="data.value"/>
+            <!-- <b class="text-info">{{ data.value.last.toUpperCase() }}</b>, <b>{{ data.value.first }}</b> -->
+            </template>
+          </b-table>
+        </b-col>
       </b-row>
-      <!-- Content here -->
     </b-container>
   </div>
 </template>
@@ -23,6 +31,12 @@ export default {
       items: [{
         age: 1
       }]
+    }
+  },
+  methods: {
+    rowClicked(selectedRows){
+      console.log(selectedRows)
+      this.$refs.zoneForm._view(selectedRows['id'])
     }
   },
   computed: {
