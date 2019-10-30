@@ -86,13 +86,17 @@ export default {
   methods: {
     _view(id){
       let zoneType = ZoneTypeStore.getters.zoneTypes({ id: id })[0]
-      console.log(zoneType)
       this.description = zoneType.description
       this.details = zoneType.details
       this.color = zoneType.color
       this.keyAttributeName = zoneType.keyAttributeName
-      this.attributes = zoneType.attributes
+      this.attributes = zoneType.attributes.join(', ')
       this.$refs.zoneModalForm.show()
+      console.log('test', ZoneTypeStore.getters.zoneTypes({
+        where_in: {
+          id: [1, 2, 5]
+        }
+      }))
     },
     save(){
       ZoneTypeStore.commit('add', {

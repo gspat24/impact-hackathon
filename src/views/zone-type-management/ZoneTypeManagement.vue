@@ -10,8 +10,11 @@
         <b-col>
           <b-table @row-dblclicked="rowClicked" striped hover :fields="['color', 'description', 'details', 'keyAttributeName', 'attributes']" :items="zoneTypeList">
             <template v-slot:cell(color)="data">
-            <fa icon="circle" :color="data.value"/>
+              <fa icon="circle" :color="data.value"/>
             <!-- <b class="text-info">{{ data.value.last.toUpperCase() }}</b>, <b>{{ data.value.first }}</b> -->
+            </template>
+            <template v-slot:cell(attributes)="data">
+              {{data.value.join(', ')}}
             </template>
           </b-table>
         </b-col>
