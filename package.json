@@ -55,20 +55,11 @@
       "keyword-spacing": "off",
       "comma-dangle": "off",
       "vue/require-v-for-key": "off",
-      "vue/valid-v-for": "off",
       "prefer-promise-reject-errors": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "overrides": [{
-      "files": [
-        "**/__tests__/*.{j,t}s?(x)"
-      ],
-      "env": {
-        "mocha": true
-      }
-    }]
+    }
   },
   "postcss": {
     "plugins": {
@@ -79,6 +70,9 @@
     "> 1%",
     "last 2 versions"
   ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
   "lint-staged": {
     "*.{js,vue}": [
       "vue-cli-service lint",
