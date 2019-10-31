@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <b-dropdown variant="outline-primary" class="" >
       <template v-slot:button-content variant="primary">
         <fa icon="filter" /> Filter
@@ -8,6 +8,7 @@
 
         <template v-for="zoneType in ZoneTypeList">
           <b-form-checkbox
+            v-bind:key="zoneType['id']"
             v-model="checkList[zoneType['id']]"
             name="checkbox-1"
             value="accepted"
