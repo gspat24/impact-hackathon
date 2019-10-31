@@ -1,6 +1,6 @@
 <template>
-  <div >
-    <b-dropdown variant="outline-primary" class="" >
+  <div class="text-left mx-5 mb-2">
+    <b-dropdown variant="outline-primary" >
       <template v-slot:button-content variant="primary">
         <fa icon="filter" /> Filter
       </template>
