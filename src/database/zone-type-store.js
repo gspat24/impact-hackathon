@@ -1,7 +1,7 @@
 import Vuex from 'vuex'
 import Controller from './controller'
-// import Vue from 'vue'
-
+import Vue from 'vue'
+Vue.use(Vuex)
 let store = new Vuex.Store({
   state: {
     /***

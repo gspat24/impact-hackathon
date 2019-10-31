@@ -1,16 +1,40 @@
 <template>
   <div>
-    <b-dropdown>
-      <template v-slot:button-content>
-        <fa icon="filter" />Filter
+    <b-dropdown variant="outline-primary" class="" >
+      <template v-slot:button-content variant="primary">
+        <fa icon="filter" /> Filter
       </template>
-      <b-dropdown-item href="#">An item</b-dropdown-item>
-      <b-dropdown-item href="#">Another item</b-dropdown-item>
+      <b-dropdown-form style="width: 360px">
+
+        <template v-for="zoneType in ZoneTypeList">
+          <b-form-checkbox
+            v-model="checkList[zoneType['id']]"
+            name="checkbox-1"
+            value="accepted"
+          >
+            <fa icon="circle" :color="zoneType['color']" />{{zoneType['description']}}
+          </b-form-checkbox>
+        </template>
+      </b-dropdown-form>
     </b-dropdown>
 
   </div>
 </template>
 <script>
+import ZoneTypeList from '@/database/zone-type-store.js'
 export default {
+  data(){
+    return {
+      checkList: {}
+    }
+  },
+  methods: {
+    // changeFilter
+  },
+  computed: {
+    ZoneTypeList(){
+      return ZoneTypeList.state.zoneTypes
+    }
+  }
 }
 </script>
