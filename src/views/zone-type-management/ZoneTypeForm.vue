@@ -1,6 +1,6 @@
 <template>
   <div>
-      <b-button v-b-modal.modal-1>Add Zone</b-button>
+      <b-button v-b-modal.modal-1 variant="primary"><fa icon="plus" /> Add Zone Type</b-button>
 
       <b-modal ref="zoneModalForm" id="modal-1" title="BootstrapVue">
         <b-form-group
@@ -29,7 +29,9 @@
 
           <b-input-group >
             <template v-if="color" v-slot:append>
-              <b-input-group-text > <fa icon="circle" :color="color"/> </b-input-group-text >
+              <b-input-group-text class="bg-white" :style="{ 'background-color': 'color' }" >
+                <fa icon="circle" :color="color"/>
+              </b-input-group-text >
             </template>
             <b-form-input
               required
@@ -82,6 +84,20 @@ export default {
     }
   },
   methods: {
+    _view(id){
+      let zoneType = ZoneTypeStore.getters.zoneTypes({ id: id })[0]
+      this.description = zoneType.description
+      this.details = zoneType.details
+      this.color = zoneType.color
+      this.keyAttributeName = zoneType.keyAttributeName
+      this.attributes = zoneType.attributes.join(', ')
+      this.$refs.zoneModalForm.show()
+      console.log('test', ZoneTypeStore.getters.zoneTypes({
+        where_in: {
+          id: [1, 2, 5]
+        }
+      }))
+    },
     save(){
       ZoneTypeStore.commit('add', {
         description: this.description,
